@@ -1,0 +1,20 @@
+sp {yelp-agent*propose*clean-search
+   (state <s> ^name yelp-agent
+              ^io.output-link <ol>)
+   (<ol> ^search <search>)
+   (<search> ^status complete)
+-->
+   (<s> ^operator <op> + =)
+   (<op> ^name clean-search)
+}
+
+sp {apply*clean-search
+   (state <s> ^operator <op>
+              ^io.output-link <ol>)
+   (<ol> ^search <search>)
+   (<search> ^status complete)
+   (<op> ^name clean-search)
+-->
+   (<ol> ^search <search> -)
+}
+

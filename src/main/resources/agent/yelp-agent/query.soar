@@ -1,0 +1,36 @@
+sp {yelp-agent*propose*nb-query
+   (state <s> ^name yelp-agent
+              ^io.input-link <il>)
+   (<il> ^query <qs>)
+   (<qs>  ^category <cat>
+          ^price <price>
+          ^review-count <rc>
+          ^rating <rt>)
+-->
+   (<s> ^operator <op> + =)
+   (<op> ^name nb-query)
+}
+
+sp {apply*query-sign
+   (state <s> ^operator <op>
+              ^io.input-link <il>
+              ^io.output-link <ol>)
+   (<il> ^query <qs>)
+   (<qs>  ^category <cat>
+          ^price <price>
+          ^review-count <rc>
+          ^rating <rt>)
+   (<s> ^yelp-nb <id>)
+   (<op> ^name nb-query)
+-->
+   (<ol> ^query-handler <qh>)
+   (<qh> ^id <id> ^query <q>)
+   (<q> ^features <f>)
+   (<f> ^categorical <c1> ^categorical <p1> ^numerical <r1> ^numerical <r2>)
+   (<c1> ^category <cat>)
+   (<p1> ^price <price>)
+   (<r1> ^review-count <rc>)
+   (<r2> ^rating <rt>) 
+   (<q> ^parameters <p>)
+   (<p> ^smoothing 1.0)
+}

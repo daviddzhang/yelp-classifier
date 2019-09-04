@@ -1,0 +1,21 @@
+sp {yelp-agent*propose*clean-model
+   (state <s> ^name yelp-agent
+              ^io.output-link <ol>)
+   (<ol> ^create <cr>)
+  -(<s> ^yelp-nb <id>)
+-->
+   (<s> ^operator <op> + =)
+   (<op> ^name clean-model)
+}
+
+sp {apply*clean-model
+   (state <s> ^operator <op>
+              ^io.output-link <ol>)
+   (<ol> ^create <cr>)
+   (<cr> ^name yelp-nb)
+   (<cr> ^id <id>)
+   (<op> ^name clean-model)
+-->
+   (<s> ^yelp-nb <id>)
+   (<ol> ^create <cr> -)
+}

@@ -1,0 +1,38 @@
+sp {yelp-agent*propose*train
+   (state <s> ^name yelp-agent
+              ^io.input-link <il>)
+   (<s> ^yelp-nb <id>)
+   (<il> ^training <vars>)
+   (<vars> ^category <cat>
+           ^price <price>
+           ^review-count <rc>
+           ^rating <rt>
+           ^liked <l>)
+-->
+   (<s> ^operator <op> + =)
+   (<op> ^name train)
+}
+
+sp {apply*train
+   (state <s> ^operator <op>
+              ^io.input-link <il>
+              ^io.output-link <ol>)
+   (<il> ^training <vars>)
+   (<s> ^yelp-nb <id>)
+   (<vars> ^category <cat>
+           ^price <price>
+           ^review-count <rc>
+           ^rating <rt>
+           ^liked <l>)
+   (<op> ^name train)
+-->
+   (<ol> ^training <te>)
+   (<te> ^id <id>)
+   (<te> ^train <tr>)
+   (<tr> ^categorical <c1> ^categorical <p1> ^numerical <r1> ^numerical <r2> ^categorical <l1>)
+   (<c1> ^category <cat>)
+   (<p1> ^price <price>)
+   (<r1> ^review-count <rc>)
+   (<r2> ^rating <rt>)
+   (<l1> ^liked <l>)
+}

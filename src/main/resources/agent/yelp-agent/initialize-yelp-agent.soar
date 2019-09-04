@@ -1,0 +1,15 @@
+sp {propose*initialize-yelp-agent
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> +)
+   (<o> ^name initialize-yelp-agent)
+}
+
+sp {apply*initialize-yelp-agent
+   (state <s> ^operator <op>)
+   (<op> ^name initialize-yelp-agent)
+-->
+   (<s> ^name yelp-agent)
+}
+

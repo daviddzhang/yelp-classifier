@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.davidzhang</groupId>
+    <artifactId>YelpClassifier</artifactId>
+    <version>1.0</version>
+
+    <build>
+        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>default-resources</id>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <id>default-test</id>
+                        <phase>none</phase>
+                    </execution>
+
+                    <execution>
+                        <id>mac</id>
+                        <goals>
+                            <goal>
+                                test
+                            </goal>
+                        </goals>
+                        <configuration>
+                            <argLine>-Djava.library.path=${project.basedir}/src/main/resources</argLine>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>windows</id>
+                        <goals>
+                            <goal>
+                                test
+                            </goal>
+                        </goals>
+                        <phase>none</phase>
+                        <configuration>
+                            <reuseForks>false</reuseForks>
+                            <environmentVariables>
+                                <PATH>${project.basedir}/src/main/resources</PATH>
+                            </environmentVariables>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Djava.library.path=${project.basedir}/src/main/resources</argument>
+                        <argument>-classpath</argument>
+                        <classpath />
+                        <argument>yelpclassifier.YelpClassifierMain</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>project-repo</id>
+            <url>file://${project.basedir}/local-maven-repo</url>
+        </repository>
+    </repositories>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180813</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.umich</groupId>
+            <artifactId>sml</artifactId>
+            <version>9.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.davidzhang</groupId>
+            <artifactId>SoarReasoningModels</artifactId>
+            <version>[1.0,)</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

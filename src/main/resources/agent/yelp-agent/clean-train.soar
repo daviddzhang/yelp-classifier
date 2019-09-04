@@ -1,0 +1,17 @@
+sp {yelp-agent*propose*train-cleanup
+   (state <s> ^name yelp-agent
+              ^io.output-link <ol>)
+   (<ol> ^training <te>)
+-->
+   (<s> ^operator <op> + =)
+   (<op> ^name train-cleanup)
+}
+
+sp {apply*train-cleanup
+   (state <s> ^operator <op>
+              ^io.output-link <ol>)
+   (<ol> ^training <te>)
+   (<op> ^name train-cleanup)
+-->
+   (<ol> ^training <te> -)
+}

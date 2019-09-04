@@ -1,0 +1,221 @@
+sp {yelp-agent*propose*create-nb-model
+   (state <s> ^name yelp-agent
+              ^io.input-link <il>)
+   (<il> ^init <i>)
+-->
+   (<s> ^operator <op> + =)
+   (<op> ^name create-nb-model)
+}
+
+sp {apply*create-nb-model
+   (state <s> ^operator <op>)
+   (<s> ^io.output-link <ol>)
+   (<op> ^name create-nb-model)
+-->
+   (<ol> ^create <cr>)
+   (<cr> ^model <model> ^name yelp-nb)
+   (<model> ^naive-bayes <nb>)
+   (<nb> ^parameters <p>)
+   (<p> ^features <f>)
+   (<f> ^category <category> ^review-count <rc> ^rating <rating> ^price <price> ^liked <liked>)
+   (<category> ^categorical <category-vals>)
+   (<category-vals> ^swedish <c0>
+                    ^turkish <c1>
+                    ^hotdog <c2>
+                    ^catalan <c3>
+                    ^kebab <c4>
+                    ^brazilian <c5>
+                    ^laos <c6>
+                    ^malaysian <c7>
+                    ^newamerican <c8>
+                    ^armenian <c9>
+                    ^guamanian <c10>
+                    ^tradamerican <c11>
+                    ^andalusian <c12>
+                    ^romanian <c13>
+                    ^afghani <c14>
+                    ^slovakian <c15>
+                    ^argentine <c16>
+                    ^milkbars <c17>
+                    ^soup <c18>
+                    ^creperies <c19>
+                    ^sandwiches <c20>
+                    ^comfortfood <c21>
+                    ^kurdish <c22>
+                    ^chickenshop <c23>
+                    ^soulfood <c24>
+                    ^scottish <c25>
+                    ^french <c26>
+                    ^iberian <c27>
+                    ^indonesian <c28>
+                    ^chilean <c29>
+                    ^diners <c30>
+                    ^hawaiian <c31>
+                    ^basque <c32>
+                    ^pita <c33>
+                    ^meatballs <c34>
+                    ^arabian <c35>
+                    ^cambodian <c36>
+                    ^panasian <c37>
+                    ^tex-mex <c38>
+                    ^wok <c39>
+                    ^czech <c40>
+                    ^trattorie <c41>
+                    ^persian <c42>
+                    ^canteen <c43>
+                    ^flatbread <c44>
+                    ^russian <c45>
+                    ^potatoes <c46>
+                    ^jewish <c47>
+                    ^gluten_free <c48>
+                    ^beergarden <c49>
+                    ^portuguese <c50>
+                    ^beerhall <c51>
+                    ^sushi <c52>
+                    ^southern <c53>
+                    ^fishnchips <c54>
+                    ^buffets <c55>
+                    ^schnitzel <c56>
+                    ^serbocroatian <c57>
+                    ^oriental <c58>
+                    ^eastern_european <c59>
+                    ^syrian <c60>
+                    ^blacksea <c61>
+                    ^gamemeat <c62>
+                    ^irish <c63>
+                    ^brasseries <c64>
+                    ^cheesesteaks <c65>
+                    ^swissfood <c66>
+                    ^honduran <c67>
+                    ^kopitiam <c68>
+                    ^newcanadian <c69>
+                    ^hkcafe <c70>
+                    ^poutineries <c71>
+                    ^italian <c72>
+                    ^newmexican <c73>
+                    ^chicken_wings <c74>
+                    ^bangladeshi <c75>
+                    ^corsican <c76>
+                    ^steak <c77>
+                    ^dumplings <c78>
+                    ^popuprestaurants <c79>
+                    ^tapas <c80>
+                    ^nightfood <c81>
+                    ^nicaraguan <c82>
+                    ^mideastern <c83>
+                    ^bavarian <c84>
+                    ^bistros <c85>
+                    ^salad <c86>
+                    ^international <c87>
+                    ^riceshop <c88>
+                    ^tabernas <c89>
+                    ^british <c90>
+                    ^mexican <c91>
+                    ^bbq <c92>
+                    ^eltern_cafes <c93>
+                    ^cypriot <c94>
+                    ^fondue <c95>
+                    ^beisl <c96>
+                    ^pizza <c97>
+                    ^gastropubs <c98>
+                    ^danish <c99>
+                    ^indpak <c100>
+                    ^greek <c101>
+                    ^freiduria <c102>
+                    ^burgers <c103>
+                    ^mongolian <c104>
+                    ^kosher <c105>
+                    ^ukrainian <c106>
+                    ^modern_european <c107>
+                    ^latin <c108>
+                    ^cajun <c109>
+                    ^norwegian <c110>
+                    ^waffles <c111>
+                    ^breakfast_brunch <c112>
+                    ^vegetarian <c113>
+                    ^supperclubs <c114>
+                    ^japanese <c115>
+                    ^raw_food <c116>
+                    ^lyonnais <c117>
+                    ^noodles <c118>
+                    ^parma <c119>
+                    ^taiwanese <c120>
+                    ^island_pub <c121>
+                    ^uzbek <c122>
+                    ^asturian <c123>
+                    ^norcinerie <c124>
+                    ^german <c125>
+                    ^nikkei <c126>
+                    ^vegan <c127>
+                    ^israeli <c128>
+                    ^filipino <c129>
+                    ^pubfood <c130>
+                    ^georgian <c131>
+                    ^scandinavian <c132>
+                    ^peruvian <c133>
+                    ^hotpot <c134>
+                    ^korean <c135>
+                    ^tavolacalda <c136>
+                    ^currysausage <c137>
+                    ^opensandwiches <c138>
+                    ^srilankan <c139>
+                    ^australian <c140>
+                    ^venison <c141>
+                    ^chinese <c142>
+                    ^signature_cuisine <c143>
+                    ^vietnamese <c144>
+                    ^galician <c145>
+                    ^caribbean <c146>
+                    ^somali <c147>
+                    ^tapasmallplates <c148>
+                    ^asianfusion <c149>
+                    ^seafood <c150>
+                    ^fischbroetchen <c151>
+                    ^cafes <c152>
+                    ^heuriger <c153>
+                    ^spanish <c154>
+                    ^food_court <c155>
+                    ^thai <c156>
+                    ^czechslovakian <c157>
+                    ^baguettes <c158>
+                    ^foodstands <c159>
+                    ^eritrean <c160>
+                    ^rotisserie_chicken <c161>
+                    ^pakistani <c162>
+                    ^swabian <c163>
+                    ^belgian <c164>
+                    ^newzealand <c165>
+                    ^burmese <c166>
+                    ^wraps <c167>
+                    ^delis <c168>
+                    ^ethiopian <c169>
+                    ^cafeteria <c170>
+                    ^singaporean <c171>
+                    ^giblets <c172>
+                    ^himalayan <c173>
+                    ^modern_australian <c174>
+                    ^polynesian <c175>
+                    ^cuban <c176>
+                    ^austrian <c177>
+                    ^polish <c178>
+                    ^yugoslav <c179>
+                    ^traditional_swedish <c180>
+                    ^bulgarian <c181>
+                    ^hotdogs <c182>
+                    ^sud_ouest <c183>
+                    ^moroccan <c184>
+                    ^laotian <c185>
+                    ^african <c186>
+                    ^pfcomercial <c187>
+                    ^mediterranean <c188>
+                    ^dinnertheater <c189>
+                    ^halal <c190>
+                    ^hungarian <c191>)
+   (<rc> ^numerical <num>)
+   (<rating> ^numerical <num2>)
+   (<price> ^categorical <price-vals>)
+   (<price-vals> ^$ <$> ^$$ <$$> ^$$$ <$$$> ^$$$$ <$$$$>)
+   (<liked> ^categorical <liked-vals>)
+   (<liked-vals> ^good <good> ^okay <ok> ^bad <bad>)
+   (<p> ^target liked)
+}

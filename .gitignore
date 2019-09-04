@@ -1,0 +1,5 @@
+*.vsa~
+*.soar~
+*.dm
+*.dm~
+src/main/java/yelpclassifier/yelpquery/APIKey.java
